@@ -2,4 +2,4 @@
  * Public API Surface of zxing-scanner
  */
 
-export * from '@zxing/ngx-scanner';
+export * from '../../../zxing-scanner/src/public_api';

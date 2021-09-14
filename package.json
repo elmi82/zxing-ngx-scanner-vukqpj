@@ -1,7 +1,50 @@
 {
-  "name": "zxing-ngx-scanner",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@zxing/ngx-scanner",
+  "version": "1.0.0",
+  "homepage": "https://github.com/zxing-js/ngx-scanner#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zxing-js/ngx-scanner.git"
+  },
+  "authors": [
+    {
+      "name": "David Werth",
+      "email": "werth.david@gmail.com"
+    },
+    {
+      "name": "Luiz Machado",
+      "email": "machado@odahcam.com"
+    }
+  ],
+  "keywords": [
+    "angular",
+    "zxing",
+    "qr-code",
+    "barcode",
+    "scanner",
+    "scan"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zxing-js/ngx-scanner/issues"
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve zxing-scanner-demo --disable-host-check",
+    "build": "ng build zxing-scanner --prod && cp README.md ./dist/zxing-scanner",
+    "build:demo": "ng build zxing-scanner-demo --prod",
+    "build:gh-pages": "ng build zxing-scanner-demo --prod --base-href /ngx-scanner/ --output-path dist/gh-pages",
+    "test": "ng test zxing-scanner --watch=false --browsers=ChromeHeadless && ng test zxing-scanner-demo --watch=false --browsers=ChromeHeadless",
+    "lint": "ng lint zxing-scanner && ng lint zxing-scanner-demo",
+    "e2e": "ng e2e",
+    "docs": "npm run docs:build",
+    "docs:build": "compodoc -p tsconfig.json -n zxing-scanner -d docs --hideGenerator",
+    "docs:serve": "npm run docs:build -- -s",
+    "docs:watch": "npm run docs:build -- -s -w",
+    "publish:dist": "cd ./dist/zxing-scanner && npm publish --access=public",
+    "postinstall": "node -e \"console.log('\\u001b[35m\\u001b[1mLove ZXing for JS? You can now donate to our open collective:\\u001b[22m\\u001b[39m\\n > \\u001b[34mhttps://opencollective.com/zxing-js/donate\\u001b[0m')\"",
+    "deploy:demo:ngh": "npm run build:gh-pages && npx ngh --dir=dist/gh-pages"
+  },
   "dependencies": {
     "@angular/animations": "12.0.4",
     "@angular/cdk": "12.0.4",
@@ -15,9 +58,10 @@
     "@angular/service-worker": "12.0.4",
     "@zxing/browser": "0.0.9",
     "@zxing/library": "0.18.3",
-    "@zxing/ngx-scanner": "3.2.2",
     "rxjs": "^6.6.3",
-    "tslib": "^2.2.0",
+    "tslib": "^2.2.0"
+  },
+  "devDependencies": {
     "@angular-devkit/build-angular": "~12.0.4",
     "@angular-devkit/core": "12.0.4",
     "@angular/cli": "^12.0.4",
@@ -45,14 +89,8 @@
     "typescript": "4.2.4",
     "zone.js": "~0.11.4"
   },
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint"
-  },
-  "devDependencies": {
-
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/zxing-js"
   }
 }

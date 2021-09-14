@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppInfoDialogComponent } from './app-info-dialog/app-info-dialog.component';
@@ -15,7 +14,6 @@ import { FormatsDialogComponent } from './formats-dialog/formats-dialog.componen
 
     // Angular
     BrowserModule,
-    BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
     // Local

@@ -3,8 +3,48 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "zxing-scanner": {
+      "root": "projects/zxing-scanner",
+      "sourceRoot": "projects/zxing-scanner/src",
+      "projectType": "library",
+      "prefix": "zxing",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/zxing-scanner/tsconfig.lib.json",
+            "project": "projects/zxing-scanner/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/zxing-scanner/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/zxing-scanner/src/test.ts",
+            "tsConfig": "projects/zxing-scanner/tsconfig.spec.json",
+            "karmaConfig": "projects/zxing-scanner/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/zxing-scanner/tsconfig.lib.json",
+              "projects/zxing-scanner/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "zxing-scanner-demo": {
-      "root": "",
+      "root": "projects/zxing-scanner-demo/",
       "sourceRoot": "projects/zxing-scanner-demo/src",
       "projectType": "application",
       "prefix": "app",
@@ -22,14 +62,19 @@
               "projects/zxing-scanner-demo/src/favicon.ico",
               "projects/zxing-scanner-demo/src/assets",
               "projects/zxing-scanner-demo/src/browserconfig.xml",
-              "projects/zxing-scanner-demo/src/manifest.webmanifest",
               "projects/zxing-scanner-demo/src/manifest.webmanifest"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "projects/zxing-scanner-demo/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -39,26 +84,29 @@
                   "with": "projects/zxing-scanner-demo/src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "6mb",
+                  "maximumError": "9mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ],
               "serviceWorker": true,
               "ngswConfigPath": "projects/zxing-scanner-demo/ngsw-config.json"
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -93,7 +141,6 @@
               "projects/zxing-scanner-demo/src/favicon.ico",
               "projects/zxing-scanner-demo/src/assets",
               "projects/zxing-scanner-demo/src/browserconfig.xml",
-              "projects/zxing-scanner-demo/src/manifest.webmanifest",
               "projects/zxing-scanner-demo/src/manifest.webmanifest"
             ]
           }
@@ -141,5 +188,8 @@
       }
     }
   },
-  "defaultProject": "zxing-scanner-demo"
+  "defaultProject": "ngx-scanner",
+  "cli": {
+    "analytics": "3cefdb26-b867-48f4-b616-ac0543c0fa44"
+  }
 }
